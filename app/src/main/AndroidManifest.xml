@@ -13,7 +13,6 @@
         android:theme="@style/Theme.NUMAD25Sp_WenyuPan"
         tools:targetApi="31">
 
-        <!-- Main Activity (Launcher) -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -25,12 +24,12 @@
             </intent-filter>
         </activity>
 
-        <!-- Calculator Activity (Fixed) -->
+
         <activity
             android:name=".CalculatorActivity"
-            android:exported="false"
             android:label="Calculator"
-            android:theme="@style/Theme.NUMAD25Sp_WenyuPan" />
+            android:theme="@style/Theme.AppCompat.Light"
+            android:exported="false"/>
 
     </application>
 </manifest>

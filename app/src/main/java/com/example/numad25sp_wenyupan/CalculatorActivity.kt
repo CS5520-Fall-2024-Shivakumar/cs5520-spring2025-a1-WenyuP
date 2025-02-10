@@ -13,7 +13,7 @@ class CalculatorActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calculator) // Link to your XML file
+        setContentView(R.layout.activity_calculator) // Link to XML layout
 
         display = findViewById(R.id.displayText)
 
@@ -30,19 +30,43 @@ class CalculatorActivity : AppCompatActivity() {
 
     private fun buttonClicked(button: Button) {
         val value = button.text.toString()
+
         if (value == "=") {
             try {
-                currentExpression = evaluateExpression(currentExpression).toString()
+                if (currentExpression.isNotEmpty()) {
+                    val formattedExpression = formatExpression(currentExpression)
+                    currentExpression = evaluateExpression(formattedExpression).toString()
+                }
             } catch (e: Exception) {
                 currentExpression = "Error"
             }
         } else {
-            currentExpression += value
+            if (isValidInput(value)) {
+                currentExpression += if (value == "x") "*" else value // Replace "x" with "*"
+            }
         }
         display.text = currentExpression
     }
 
     private fun evaluateExpression(expression: String): Double {
-        return ExpressionBuilder(expression).build().evaluate()
+        return if (expression.isNotEmpty()) {
+            ExpressionBuilder(expression).build().evaluate()
+        } else {
+            0.0  // Return 0 for empty expressions
+        }
+    }
+
+    private fun formatExpression(expression: String): String {
+        return expression.replace("x", "*") // Ensure multiplication is correctly formatted
+    }
+
+    private fun isValidInput(value: String): Boolean {
+        if (currentExpression.isEmpty() && "+-*/".contains(value)) {
+            return false // Prevents starting expression with an operator
+        }
+        if (currentExpression.isNotEmpty() && "+-*/".contains(currentExpression.last()) && "+-*/".contains(value)) {
+            return false // Prevents consecutive operators
+        }
+        return true
     }
 }
