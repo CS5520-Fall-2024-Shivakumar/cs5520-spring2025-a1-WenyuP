@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD25Sp_WenyuPan"
         tools:targetApi="31">
+
+        <!-- Main Activity (Launcher) -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -19,10 +21,16 @@
             android:theme="@style/Theme.NUMAD25Sp_WenyuPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <!-- Calculator Activity (Fixed) -->
+        <activity
+            android:name=".CalculatorActivity"
+            android:exported="false"
+            android:label="Calculator"
+            android:theme="@style/Theme.NUMAD25Sp_WenyuPan" />
+
+    </application>
 </manifest>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".CalculatorActivity"
+        android:padding="16dp">
+
+
+        <!-- Display TextView -->
+        <TextView
+            android:id="@+id/displayText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="CALC"
+            android:textSize="24sp"
+            android:background="@android:color/darker_gray"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="#000000"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Number Buttons (1-3) -->
+
+        <!-- Row 2: Buttons 4-6 -->
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:text="1"
+            app:layout_constraintTop_toTopOf="@id/guideline2"
+            tools:layout_editor_absoluteX="45dp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:text="2"
+            app:layout_constraintTop_toTopOf="@id/guideline2"
+            tools:layout_editor_absoluteX="163dp" />
+
+        <!-- Row 3: Buttons 7-9 -->
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:text="3"
+            app:layout_constraintTop_toTopOf="@id/guideline2"
+            tools:layout_editor_absoluteX="299dp" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="4"
+            app:layout_constraintTop_toTopOf="@id/guideline3"
+            tools:layout_editor_absoluteX="40dp" />
+
+        <!-- Operators and Zero -->
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="5"
+            app:layout_constraintTop_toTopOf="@id/guideline3"
+            tools:layout_editor_absoluteX="179dp" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:text="6"
+            app:layout_constraintTop_toTopOf="@id/guideline3"
+            tools:layout_editor_absoluteX="304dp" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:text="7"
+            app:layout_constraintTop_toTopOf="@id/guideline4"
+            tools:layout_editor_absoluteX="48dp" />
+
+        <!-- Last row: Multiply and Equals -->
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="8"
+            app:layout_constraintTop_toTopOf="@id/guideline4"
+            tools:layout_editor_absoluteX="179dp" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:text="9"
+            app:layout_constraintTop_toTopOf="@id/guideline4"
+            tools:layout_editor_absoluteX="307dp" />
+
+        <Button
+            android:id="@+id/buttonPlus"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:text="+"
+            app:layout_constraintTop_toTopOf="@id/guideline5"
+            tools:layout_editor_absoluteX="48dp" />
+
+        <Button
+            android:id="@+id/button0"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:text="0"
+            app:layout_constraintTop_toTopOf="@id/guideline5"
+            tools:layout_editor_absoluteX="179dp" />
+
+        <Button
+            android:id="@+id/buttonMinus"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:text="-"
+            app:layout_constraintTop_toTopOf="@id/guideline5"
+            tools:layout_editor_absoluteX="306dp" />
+
+        <Button
+            android:id="@+id/buttonMultiply"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:text="x"
+            app:layout_constraintTop_toTopOf="@id/guideline6"
+            tools:layout_editor_absoluteX="29dp" />
+
+        <Button
+            android:id="@+id/buttonEqual"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:text="="
+            app:layout_constraintTop_toTopOf="@id/guideline6"
+            tools:layout_editor_absoluteX="223dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8680203" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.32994923" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.46319798" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.61167514" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7398477" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

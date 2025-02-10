@@ -1,5 +1,6 @@
 package com.example.numad25sp_wenyupan
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -56,6 +57,16 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             ).show()
         }) {
             Text("About Me")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // "Quic Calc" Button to navigate to CalculatorActivity
+        Button(onClick = {
+            val intent = Intent(context, CalculatorActivity::class.java)
+            context.startActivity(intent)
+        }) {
+            Text("Quick Calc")
         }
     }
 }
