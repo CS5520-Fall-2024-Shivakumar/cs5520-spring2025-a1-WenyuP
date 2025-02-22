@@ -37,6 +37,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
+    val context = LocalContext.current
+
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -44,32 +46,37 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     ) {
         Text(text = "Hello World!")
 
-        // Spacer for padding between Text and Button
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Button to show a Toast message
-        val context = LocalContext.current
         Button(onClick = {
-            Toast.makeText(
-                context,
-                "Name: Wenyu Pan\nEmail: pan.we@northeastern.edu",
-                Toast.LENGTH_LONG
-            ).show()
+            val intent = Intent(context, AboutMeActivity::class.java)
+            context.startActivity(intent)
         }) {
             Text("About Me")
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // "Quic Calc" Button to navigate to CalculatorActivity
         Button(onClick = {
             val intent = Intent(context, CalculatorActivity::class.java)
             context.startActivity(intent)
         }) {
             Text("Quick Calc")
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // New Button for "Contacts Collector"
+        Button(onClick = {
+            val intent = Intent(context, ContactsCollectorActivity::class.java)
+            context.startActivity(intent)
+        }) {
+            Text("Contacts Collector")
+        }
     }
 }
+
+
 
 @Preview(showBackground = true)
 @Composable
