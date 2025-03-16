@@ -22,5 +22,14 @@
         android:layout_below="@id/helloWorldText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"/>
+    <Button
+        android:id="@+id/quickCalcButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quick Calc"
+        android:layout_below="@id/aboutMeButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
 
 </RelativeLayout>
