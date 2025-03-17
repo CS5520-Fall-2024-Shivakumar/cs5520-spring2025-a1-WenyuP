@@ -33,6 +33,8 @@ dependencies {
     implementation libs.appcompat
     implementation libs.material
     testImplementation libs.junit
+    implementation libs.constraintlayout
+    implementation libs.gson
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 }
