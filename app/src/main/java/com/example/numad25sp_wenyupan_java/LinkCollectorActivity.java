@@ -23,6 +23,7 @@ public class LinkCollectorActivity extends AppCompatActivity implements LinkList
 
     private static final String PREFS_NAME = "contacts_prefs";
     private static final String KEY_CONTACTS = "contacts_list";
+    private static final String STATE_CONTACTS = "state_contacts";
 
     private RecyclerView recyclerView;
     private LinkListAdapter adapter;
@@ -37,7 +38,13 @@ public class LinkCollectorActivity extends AppCompatActivity implements LinkList
         setContentView(R.layout.activity_link_collector);
 
         sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        contactList = loadContacts();
+
+        // Restore contacts from savedInstanceState if available, else from SharedPreferences
+        if (savedInstanceState != null) {
+            contactList = loadContactsFromState(savedInstanceState);
+        } else {
+            contactList = loadContacts();
+        }
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -107,18 +114,19 @@ public class LinkCollectorActivity extends AppCompatActivity implements LinkList
                     Link newContact = new Link(name, phone);
                     contactList.add(newContact);
                     adapter.notifyDataSetChanged();
+                    saveContacts(); // Ensure new contact is persisted
 
                     Snackbar.make(recyclerView, "Contact added!", Snackbar.LENGTH_LONG)
                             .setAction("Undo", v -> {
                                 contactList.remove(newContact);
                                 adapter.notifyDataSetChanged();
+                                saveContacts();
                                 Snackbar.make(recyclerView, "Contact removed!", Snackbar.LENGTH_SHORT).show();
                             }).show();
                 })
                 .setNegativeButton("Cancel", null)
                 .show();
     }
-
 
     private void saveContacts() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -129,6 +137,24 @@ public class LinkCollectorActivity extends AppCompatActivity implements LinkList
 
     private List<Link> loadContacts() {
         String json = sharedPreferences.getString(KEY_CONTACTS, null);
+        if (json == null) {
+            return new ArrayList<>();
+        }
+        Type type = new TypeToken<List<Link>>() {}.getType();
+        return gson.fromJson(json, type);
+    }
+
+    // Save contacts when screen is rotated**
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String json = gson.toJson(contactList);
+        outState.putString(STATE_CONTACTS, json);
+    }
+
+    // Load contacts when screen is restored**
+    private List<Link> loadContactsFromState(Bundle savedInstanceState) {
+        String json = savedInstanceState.getString(STATE_CONTACTS, null);
         if (json == null) {
             return new ArrayList<>();
         }
