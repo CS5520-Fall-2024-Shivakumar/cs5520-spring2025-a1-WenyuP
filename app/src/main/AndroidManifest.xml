@@ -34,6 +34,9 @@
 
         <activity android:name=".AddLinkPageActivity" android:exported="false" />
 
+        <activity android:name=".PrimeDirectiveActivity"
+            android:exported="false"
+            android:label="Prime Directive"/>
 
     </application>
 

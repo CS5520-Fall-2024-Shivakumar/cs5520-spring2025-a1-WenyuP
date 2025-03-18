@@ -90,7 +90,7 @@ public class CalculatorActivity extends AppCompatActivity {
                 sign = (c == '+') ? 1 : -1;
             }
         }
-        result += sign * currentNumber; // Add the last number
+        result += sign * currentNumber;
 
         return result;
     }
